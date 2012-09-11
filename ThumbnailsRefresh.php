@@ -72,7 +72,7 @@ if (( $db = new mysqli($db_host, $db_user, $db_name) ) AND $db->select_db($db_na
                     if ($update_query) {
                         $update_query = "UPDATE `movie` SET " . $update_query 
                                 . " WHERE `idMovie` = '" . mysqli_real_escape_string($db, $row['idMovie']) . "'";
-                        if (!empty($movie_images['posters'])) {
+                        if ($preview AND !empty($movie_images['posters'])) {
                             echo '<div>' . $row['c00'] . '</div>';
                             $image_url = $tmdb->getImageUrl($movie_images['posters'][0]['file_path'], TMDb::IMAGE_POSTER, 'w92');
                             echo '<div><img src="' . $image_url . '" /></div>';
